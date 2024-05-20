@@ -1,0 +1,33 @@
+# 忽略编译生成的文件
+*.o
+*.out
+*.exe
+
+# 忽略编辑器临时文件
+*~
+.*.swp
+
+# 忽略IDE/编辑器生成的目录
+.idea/
+.vscode/
+
+# 忽略依赖管理器生成的目录
+node_modules/
+vendor/
+
+# 忽略系统文件
+.DS_Store
+Thumbs.db
+
+# 忽略日志文件
+*.log
+
+# 忽略数据库文件
+*.sqlite
+*.sqlite3
+
+# 忽略包管理器配置文件和缓存
+package-lock.json
+yarn.lock
+npm-debug.log
+.pnpm/
