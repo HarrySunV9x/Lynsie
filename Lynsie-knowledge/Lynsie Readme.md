@@ -11,3 +11,6 @@ Todo
 Next.js
 # 后端服务
 LangChain Server
+# 机器人
+通过CV实现一个自动行动的机器人
+超难，最终目标，Todo
