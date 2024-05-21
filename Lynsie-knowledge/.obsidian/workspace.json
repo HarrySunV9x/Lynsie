@@ -13,7 +13,19 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Lynsie Readme.md",
+                "file": "lynsie-nextjs.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "104ae28d7611455b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "lynsie-nextjs.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Lynsie Readme.md",
+                "file": "lynsie-nextjs.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Lynsie Readme.md",
+                "file": "lynsie-nextjs.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Lynsie Readme.md"
+                "file": "lynsie-nextjs.md"
               }
             }
           }
@@ -148,8 +160,9 @@
   },
   "active": "89f459ff0e25712b",
   "lastOpenFiles": [
-    "CharactorDesign.md",
     "Lynsie Readme.md",
+    "lynsie-nextjs.md",
+    "CharactorDesign.md",
     "Welcome.md"
   ]
 }

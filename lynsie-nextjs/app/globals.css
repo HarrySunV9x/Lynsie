@@ -1,0 +1,59 @@
+:root {
+    --max-width: 1100px;
+    --border-radius: 12px;
+    --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+
+    --color-primary: rgb(247, 112, 90);         /* 主题色，用于重点突出和按钮 */
+    --color-primary-variant: rgb(237, 92, 70);  /* 主题色的变体，用于悬停和活跃状态 */
+    --color-text-on-primary: #ffffff;           /* 对于在主色上的文本 */
+    --color-text-on-secondary: #d0d0d0;           /* 对于在主色上的文本 */
+    --foreground-rgb: 0, 0, 0;                  /* 前景色，用于文本和图标 */
+    --background-start-rgb: 214, 219, 220;      /* 背景渐变起始色 */
+    --background-end-rgb: 255, 255, 255;        /* 背景渐变结束色 */
+    --color-text: #333333;                      /* 主要文本色，提供足够的对比 */
+    --color-text-secondary: #555555;            /* 次要文本色，稍微轻一点 */
+    --color-secondary: #FF69B4;                 /* 次主题色，用于突出界面的其他元素 */
+    --color-accent: #32CD32;                    /* 强调色，用于通知、指示器和图标 */
+    --color-background: rgb(250, 245, 240);     /* 背景色，用于内容的背景，比主题色浅 */
+    --color-surface: #ffffff;                   /* 表面色，用于卡片、菜单和浮动元素 */
+    --color-error: #b00020;                     /* 错误色，用于错误提示和状态 */
+    --color-link: rgb(30, 144, 255);            /* 链接色，用于文本链接 */
+    --color-overlay: rgba(0, 0, 0, 0.7);        /* 遮罩层色，用于模态窗口和遮罩 */
+    --color-shadow: rgba(0, 0, 0, 0.1);         /* 阴影色，用于盒子阴影 */
+    --color-border: rgb(162, 162, 162);         /* 边框色，用于分隔元素和强调边界 */
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    min-height: 100%;
+}
+
+body {
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(
+            to bottom,
+            transparent,
+            rgb(var(--background-end-rgb))
+    ) rgb(var(--background-start-rgb));
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        color-scheme: dark;
+    }
+}

@@ -1,0 +1,15 @@
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 720px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    color: #333;
+}

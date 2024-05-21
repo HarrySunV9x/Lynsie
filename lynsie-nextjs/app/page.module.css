@@ -1,0 +1,80 @@
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+    background-color: var(--color-overlay);
+}
+
+.mainTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 360px;
+    color: var(--color-text-on-primary);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.mainTitle h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+.mainImage {
+    filter: brightness(50%);
+}
+
+.mainLogo {
+    margin-top: -7.5vh;
+}
+
+.mainText {
+    font-size: 1rem;
+    line-height: 2;
+    color: var(--color-text-on-secondary);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(50%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.mainPersonal {
+    margin-top: 3vh;
+    font-weight: 800;
+    animation: slideIn 0.5s ease-out forwards;
+    animation-delay: 0s;
+    opacity: 0;
+}
+
+.mainWork {
+    margin-top: 4vh;
+    animation: slideIn 0.5s ease-out forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+}
+
+.mainAbility {
+    margin-top: 4vh;
+    animation: slideIn 0.5s ease-out forwards;
+    animation-delay: 1s;
+    opacity: 0;
+}
+
+.mainFooter {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: var(--color-text-on-secondary);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 0.7rem;
+    font-style: italic;
+}

@@ -1,0 +1,41 @@
+.knowledgeMain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.knowledgeContain {
+    margin-top: 50px;
+    width: 720px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.knowledgeHeader {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.articleItem {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    height: 5.4em;
+    overflow: hidden;
+    border-top: 1px solid var(--color-border);
+}
+
+.articleItem h3 {
+    line-height: 40px;
+}
+
+.moreButton {
+    background-color: var(--color-primary);
+    color: var(--color-text-on-primary);
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+}
