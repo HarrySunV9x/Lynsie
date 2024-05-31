@@ -1,10 +1,10 @@
 from typing import Tuple, List
 from langchain_core.output_parsers import StrOutputParser
+output_parser = StrOutputParser()
 from langchain.prompts.prompt import PromptTemplate
 from langchain.schema.runnable import RunnableMap, RunnablePassthrough
+from langserve.pydantic_v1 import BaseModel, Field
 from model import llm_model
-
-output_parser = StrOutputParser()
 
 _TEMPLATE = """鉴于以下对话和后续问题，请将后续问题重新表述为一个独立的问题
 
@@ -31,3 +31,13 @@ _inputs = RunnableMap(
                         | llm_model
                         | StrOutputParser(),
 )
+
+class ChatHistory(BaseModel):
+    """Chat history with the bot."""
+
+    chat_history: List[Tuple[str, str]] = Field(
+        ...,
+        extra={"widget": {"type": "chat", "input": "question"}},
+    )
+    question: str
+
