@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "lynsie-nextjs.md",
+                "file": "Lynsie/lynsie-nextjs.md",
                 "mode": "source",
                 "source": false
               }
@@ -25,13 +25,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "lynsie-nextjs.md",
+                "file": "Lynsie/lynsie-nextjs.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "d46e35892af38f35",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Todolist.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -81,7 +94,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "fae85980f30d0aab",
@@ -97,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "lynsie-nextjs.md",
+                "file": "Todolist.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "lynsie-nextjs.md",
+                "file": "Todolist.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "lynsie-nextjs.md"
+                "file": "Todolist.md"
               }
             }
           }
@@ -158,11 +171,15 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "89f459ff0e25712b",
+  "active": "d46e35892af38f35",
   "lastOpenFiles": [
-    "Lynsie Readme.md",
-    "lynsie-nextjs.md",
-    "CharactorDesign.md",
+    "Lynsie/lynsie-nextjs.md",
+    "Todolist.md",
+    "Lynsie/Lynsie Readme.md",
+    "Lynsie/CharactorDesign.md",
+    "Lynsie",
+    "编程实践/C++刷题语法.md",
+    "编程实践",
     "Welcome.md"
   ]
 }
