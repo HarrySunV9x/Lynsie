@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  python-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+      target: python-app
+    ports:
+      - "1120:1120"
+    container_name: python-app-container
+
+  node-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+      target: node-app
+    ports:
+      - "1121:1121"
+    container_name: node-app-container
+
