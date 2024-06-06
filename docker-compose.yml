@@ -1,10 +1,8 @@
-version: '3.8'
-
 services:
   python-app:
     build:
       context: .
-      dockerfile: Dockerfile.python
+      dockerfile: Dockerfile.langchain
       target: python-app
     ports:
       - "8000:8000"
@@ -13,7 +11,7 @@ services:
   node-app:
     build:
       context: .
-      dockerfile: Dockerfile.node
+      dockerfile: Dockerfile.nextjs
       target: node-app
     ports:
       - "3000:3000"
