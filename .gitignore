@@ -14,7 +14,6 @@
 # 忽略依赖管理器生成的目录
 node_modules/
 vendor/
-.\lynsie-knowledge\.obsidian\workspace.json
 
 # 忽略系统文件
 .DS_Store
@@ -32,3 +31,7 @@ package-lock.json
 yarn.lock
 npm-debug.log
 .pnpm/
+
+# 忽略workspace.json
+lynsie-knowledge/.obsidian/workspace.json
+
