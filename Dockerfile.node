@@ -1,20 +1,17 @@
 # 使用官方 Node.js 运行时作为父镜像
 FROM node:20-slim AS node-app
 
-# 设置工作目录
-WORKDIR /app
+# 将当前目录内容复制到工作目录
+COPY ./lynsie-nextjs /app/lynsie-nextjs
 
-# 将 package.json 和 package-lock.json 复制到工作目录
-COPY ./lynsie-nextjs/package*.json /app/
+# 切换到应用目录
+WORKDIR /app/lynsie-nextjs
 
 # 安装依赖
 RUN npm install
 
-# 将当前目录内容复制到工作目录
-COPY ./lynsie-nextjs /app
-
 # 暴露端口
-EXPOSE 1121
+EXPOSE 3000
 
 # 运行应用
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]

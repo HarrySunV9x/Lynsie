@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile.python
       target: python-app
     ports:
-      - "1120:1120"
+      - "8000:8000"
     container_name: python-app-container
 
   node-app:
@@ -16,6 +16,6 @@ services:
       dockerfile: Dockerfile.node
       target: node-app
     ports:
-      - "1121:1121"
+      - "3000:3000"
     container_name: node-app-container
 
