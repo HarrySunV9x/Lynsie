@@ -1,5 +1,3 @@
-from typing import Tuple, List
-
 from input import _inputs, ChatHistory
 from answer import ANSWER_PROMPT
 from question import _question
