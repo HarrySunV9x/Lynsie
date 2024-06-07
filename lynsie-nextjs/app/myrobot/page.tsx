@@ -2,7 +2,7 @@
 import robot from './myrobot.module.css';
 import {useState} from "react";
 
-const LLM_ADDRESS = "http://localhost:8000/llama3/invoke";
+const LLM_ADDRESS = "http://python-app:8000/lynsie/invoke";
 
 export default function MyRobot() {
     const [inputText, setInputText] = useState('');
@@ -22,27 +22,41 @@ export default function MyRobot() {
             const data = JSON.parse(chatHistory);
             chat_history = data.map(obj => [Object.keys(obj)[0], Object.values(obj)[0]]);
         }
-        fetch(LLM_ADDRESS, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                "input": {
-                    "chat_history": chat_history,
-                    "question": inputText
-                }
-            })
-        }).then((res) => res.json())
-            .then((data) => {
-                setChatHistory((prevChatHistory) =>
-                    JSON.stringify([
-                        ...JSON.parse(prevChatHistory),
-                        {Assistant: data.output},
-                    ])
-                );
-                setLoadingState(false);
-            });
+        try{
+            fetch(LLM_ADDRESS, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "input": {
+                        "chat_history": chat_history,
+                        "question": inputText
+                    }
+                })
+            }).then((res) => res.json())
+                .then((data) => {
+                    setChatHistory((prevChatHistory) =>
+                        JSON.stringify([
+                            ...JSON.parse(prevChatHistory),
+                            {Assistant: data.output},
+                        ])
+                    );
+                    setLoadingState(false);
+                });
+        } catch (error) {
+            if (error.response) {
+                console.error('Error response data:', error.response.data);
+                console.error('Error response status:', error.response.status);
+                console.error('Error response headers:', error.response.headers);
+            } else if (error.request) {
+                console.error('No response received:', error.request);
+            } else {
+                console.error('Error setting up request:', error.message);
+            }
+            console.error('Error config:', error.config);
+        }
+
         setInputText('');
     };
 
