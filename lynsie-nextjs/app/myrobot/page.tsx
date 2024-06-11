@@ -2,7 +2,7 @@
 import robot from './myrobot.module.css';
 import {useState} from "react";
 
-const LLM_ADDRESS = "http://python-app:8000/lynsie/invoke";
+const LLM_ADDRESS = "http://localhost:80/api/lynsie/invoke";
 
 export default function MyRobot() {
     const [inputText, setInputText] = useState('');
