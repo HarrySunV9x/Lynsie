@@ -25,7 +25,6 @@ Question: {question}
 """
 ANSWER_PROMPT = ChatPromptTemplate.from_template(ANSWER_TEMPLATE)
 
-
 _TEMPLATE = """鉴于以下对话和后续问题，请将后续问题重新表述为一个独立的问题
 
 历史对话:
@@ -33,6 +32,7 @@ _TEMPLATE = """鉴于以下对话和后续问题，请将后续问题重新表�
 下一个问题: {question}
 Standalone question:"""
 CONDENSE_QUESTION_PROMPT = PromptTemplate.from_template(_TEMPLATE)
+
 
 def _format_chat_history(chat_history: List[Tuple]) -> str:
     """Format chat history into a string."""
@@ -43,16 +43,17 @@ def _format_chat_history(chat_history: List[Tuple]) -> str:
         buffer += "\n" + "\n".join([human, ai])
     return buffer
 
+
 _inputs = RunnableMap(
     standalone_question=RunnablePassthrough.assign(
         chat_history=lambda x: _format_chat_history(x["chat_history"])
-    )
-                        | CONDENSE_QUESTION_PROMPT
+    ) | CONDENSE_QUESTION_PROMPT
 )
 
 _question = {
     "question": lambda x: x["standalone_question"],
 }
+
 
 class ChatHistory(BaseModel):
     """Chat history with the bot."""
@@ -62,6 +63,7 @@ class ChatHistory(BaseModel):
         extra={"widget": {"type": "chat", "input": "question"}},
     )
     question: str
+
 
 from langchain_core.prompts import ChatPromptTemplate
 
