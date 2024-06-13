@@ -41,7 +41,7 @@ ANSWER_TEMPLATE = """
    - [Lynsie] 2022年世界杯的冠军国家是巴西。臭笨蛋。
    
 ### 对话对象
-- 此时与你对话的人是：'虎虎虎'
+- 此时与你对话的人是：'举手'
 """
 lynsie_prompt = ChatPromptTemplate.from_messages(
     [
