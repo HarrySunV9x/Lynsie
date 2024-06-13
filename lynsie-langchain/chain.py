@@ -1,12 +1,19 @@
-from prompt import _inputs, ChatHistory, ANSWER_PROMPT, _question
+from langchain_core.runnables.history import RunnableWithMessageHistory
+
+from prompt import lynsie_prompt, create_session_factory, InputChat
 from model import llm_model
 from prompt import translate_prompt
 from langchain_core.output_parsers import StrOutputParser
 
 output_parser = StrOutputParser()
 
-conversational_qa_chain = (
-        _inputs | _question | ANSWER_PROMPT | llm_model | output_parser
-)
-lynsie_chain = conversational_qa_chain.with_types(input_type=ChatHistory)
+lynsie_chain = lynsie_prompt | llm_model | output_parser
+
+lynsie_chain_with_history = RunnableWithMessageHistory(
+    lynsie_chain,
+    create_session_factory("chat_histories"),
+    input_messages_key="human_input",
+    history_messages_key="history",
+).with_types(input_type=InputChat)
+
 translate_chain = translate_prompt | llm_model | output_parser

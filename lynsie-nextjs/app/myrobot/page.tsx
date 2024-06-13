@@ -30,9 +30,14 @@ export default function MyRobot() {
                 },
                 body: JSON.stringify({
                     "input": {
-                        "chat_history": chat_history,
-                        "question": inputText
-                    }
+                        "human_input": inputText,
+                    },
+                    "config": {
+                        "configurable": {
+                            "session_id": "1"
+                        }
+                    },
+                    "kwargs": {}
                 })
             }).then((res) => res.json())
                 .then((data) => {

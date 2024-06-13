@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from langserve import add_routes
-from chain import lynsie_chain, translate_chain
+from chain import lynsie_chain_with_history, translate_chain
 
 app = FastAPI(
     title="Lynsie Langchain API Server",
@@ -20,7 +20,7 @@ app.add_middleware(
 
 add_routes(
     app,
-    lynsie_chain,
+    lynsie_chain_with_history,
     path="/lynsie",
 )
 
