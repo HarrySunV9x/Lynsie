@@ -1,13 +1,87 @@
 "use client"
 import robot from './myrobot.module.css';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
-const LLM_ADDRESS = "http://localhost:80/api/lynsie/invoke";
+const LLM_ADDRESS = "http://localhost:8000/lynsie/invoke";
+
+const handleReadHistory = async () => {
+    const response = await fetch('/myrobot/api/readHistory', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+
+    const result = await response.json();
+    return result;
+}
+
+const handleWriteHistory = async (history, id) => {
+    const data = {
+        history: history, // replace this with the actual content
+        id: id, // replace this with dynamic ID if needed
+    };
+    console.log(history + " " + id);
+
+    const response = await fetch('/myrobot/api/writeHistory', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+    console.log(result.res);
+};
+
+
+function HistoryList(setChatHistroy) {
+    const [historyList, setHistoryList] = useState([]);
+
+    const updateHistory = () => {
+        handleReadHistory().then((data) => {
+            setHistoryList(data.history);
+        });
+    };
+
+    useEffect(() => {
+        updateHistory();
+    }, []);
+
+    useEffect(() => {
+        console.log(historyList);
+    }, [historyList]);
+
+    return (
+        <div className={robot.sidebar}>
+            <div className={robot.sidebarUser}>
+                <div>
+                    harry sun
+                </div>
+            </div>
+            {historyList.map((item, index) => {
+                return (item.id === "0" ? null :
+                    <div
+                        key={index}
+                        className={robot.sidebarContent}
+                    >
+                        {item.id}
+                    </div>
+                );
+            })}
+            {/*<div className={robot.sidebarContent}>*/}
+            {/*    123*/}
+            {/*</div>*/}
+        </div>
+    )
+}
 
 export default function MyRobot() {
     const [inputText, setInputText] = useState('');
     const [chatHistory, setChatHistory] = useState('');
     const [loadingState, setLoadingState] = useState(false);
+
     const sendMessage = () => {
         setLoadingState(true);
         setChatHistory(
@@ -15,13 +89,6 @@ export default function MyRobot() {
                 ? JSON.stringify([{Human: inputText}])
                 : JSON.stringify([...JSON.parse(chatHistory), {Human: inputText}])
         );
-        var chat_history = [["", ""]];
-        if (chatHistory === "") {
-
-        } else {
-            const data = JSON.parse(chatHistory);
-            chat_history = data.map(obj => [Object.keys(obj)[0], Object.values(obj)[0]]);
-        }
         try{
             fetch(LLM_ADDRESS, {
                 method: 'POST',
@@ -45,8 +112,7 @@ export default function MyRobot() {
                         JSON.stringify([
                             ...JSON.parse(prevChatHistory),
                             {Assistant: data.output},
-                        ])
-                    );
+                        ]));
                     setLoadingState(false);
                 });
         } catch (error) {
@@ -64,6 +130,13 @@ export default function MyRobot() {
 
         setInputText('');
     };
+
+    useEffect(() => {
+        // 每次 chatHistory 或 loadingState 变化时都会触发
+        if (loadingState !== null) { // 假设 loadingState 初始化为 null
+            handleWriteHistory(chatHistory, loadingState ? 1 : 0);
+        }
+    }, [loadingState, chatHistory]);
 
     const generateChatHistory = () => {
         if (chatHistory == "") {
@@ -90,49 +163,7 @@ export default function MyRobot() {
 
     return (
         <div className={robot.robotMain}>
-            <div className={robot.sidebar}>
-                <div className={robot.sidebarUser}>
-                    <div>
-                        harry sun
-                    </div>
-                </div>
-                <div className={robot.sidebarContent}>
-                    123
-                </div>
-                <div className={robot.sidebarContent}>
-                    456
-                </div>
-                <div className={robot.sidebarContent}>
-                    456
-                </div>
-                <div className={robot.sidebarContent}>
-                    456
-                </div>
-                <div className={robot.sidebarContent}>
-                    456
-                </div>
-                <div className={robot.sidebarContent}>
-                    456
-                </div>
-                <div className={robot.sidebarContent}>
-                    456
-                </div>
-                <div className={robot.sidebarContent}>
-                    456
-                </div>
-                <div className={robot.sidebarContent}>
-                    456
-                </div>
-                <div className={robot.sidebarContent}>
-                    456
-                </div>
-                <div className={robot.sidebarContent}>
-                    456
-                </div>
-                <div className={robot.sidebarContent}>
-                    456
-                </div>
-            </div>
+            <HistoryList setChatHistroy={setChatHistory()}/>
             <div className={robot.mainContent}>
                 {generateChatHistory()}
                 <div className={robot.mainContentInput}>
